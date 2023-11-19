@@ -6,13 +6,16 @@ plugins {
 group "com.example"
 version "1.0-SNAPSHOT"
 
-def djlVersion = getEnv("DJL_VERSION", "${djl_version}")
+def djlVersion = getEnv("DJL_VERSION", "${djl_version}-SNAPSHOT")
 def engine = getEnv("DJL_ENGINE", "pytorch-native-auto")
 def os = getOsName()
 def arch = System.getProperty("os.arch") == "amd64" ? "x86_64" : System.getProperty("os.arch")
 def stagingRepo = getEnv("DJL_STAGING", null)
 def ptVersion = getEnv("PT_VERSION", "2.1.1")
 def ptJniVersion = ptVersion.replaceAll("-SNAPSHOT", "")
+if (ptVersion == "2.1.1") {
+    ptVersion = "2.1.1-SNAPSHOT"
+}
 
 repositories {
     mavenCentral()
