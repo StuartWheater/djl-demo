@@ -39,7 +39,7 @@ public class DjlPredictorRecorder {
 
     public void configureDjlPredictorProducer(BeanContainer beanContainer,
             RuntimeValue<ZooModel<?, ?>> modelHolder) {
-        DjlPredictorProducer predictorProducer = beanContainer.instance(DjlPredictorProducer.class);
+        DjlPredictorProducer predictorProducer = beanContainer.beanInstance(DjlPredictorProducer.class);
         predictorProducer.initialize(modelHolder.getValue());
     }
 }

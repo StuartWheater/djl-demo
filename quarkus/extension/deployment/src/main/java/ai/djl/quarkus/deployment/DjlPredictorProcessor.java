@@ -46,8 +46,8 @@ class DjlPredictorProcessor {
     @BuildStep
     void modelReflectionInit(BuildProducer<ReflectiveClassBuildItem> reflections,
         DjlModelConfiguration modelConfig) {
-        reflections.produce(new ReflectiveClassBuildItem(true, true, modelConfig.inputClass));
-        reflections.produce(new ReflectiveClassBuildItem(true, true, modelConfig.outputClass));
+        reflections.produce(ReflectiveClassBuildItem.builder(modelConfig.inputClass).methods(true).fields(true).build());
+        reflections.produce(ReflectiveClassBuildItem.builder(modelConfig.outputClass).methods(true).fields(true).build());
     }
 
     @BuildStep

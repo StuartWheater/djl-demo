@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <properties>
-        <djl.version>0.10.0</djl.version>
+        <djl.version>0.24.0</djl.version>
     </properties>
 
     <artifactId>quarkus-djl</artifactId>
@@ -48,7 +48,7 @@
         <plugins>
             <plugin>
                 <groupId>io.quarkus</groupId>
-                <artifactId>quarkus-bootstrap-maven-plugin</artifactId>
+                <artifactId>quarkus-extension-maven-plugin</artifactId>
                 <version>${quarkus.version}</version>
                 <executions>
                     <execution>
