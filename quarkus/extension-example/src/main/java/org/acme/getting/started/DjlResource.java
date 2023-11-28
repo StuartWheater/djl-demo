@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Paths;
 import jakarta.inject.Inject;
+import jakarta.enterprise.context.Dependent;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -26,6 +27,7 @@ import org.apache.commons.imaging.Imaging;
  * Simple DJL example that just runs prediction when you visit the page.
  */
 @Path("/")
+@Dependent
 public class DjlResource {
 
     private static final String IMAGE_URL = "https://djl-ai.s3.amazonaws.com/resources/images/kitten_small.jpg";
@@ -35,7 +37,7 @@ public class DjlResource {
     private Translator<Image, Classifications> translator;
 
     @Inject
-    DjlPredictorProducer predictorProducer;
+    DjlPredictorProducer<Image, Classifications> predictorProducer;
 
     public DjlResource() {
         translator = ImageClassificationTranslator.builder()
