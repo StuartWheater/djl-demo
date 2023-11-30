@@ -24,16 +24,17 @@ public class DjlPredictorRecorder<InputClass, OutputClass> {
     {
         Class<?> inCls  = Class.forName(configuration.inputClass);
         Class<?> outCls = Class.forName(configuration.outputClass);
+
         Criteria<InputClass, OutputClass> criteria = (Criteria<InputClass, OutputClass>) Criteria.builder()
                 .setTypes(inCls, outCls)
                 .optFilters(configuration.filters)
                 .build();
 
-//        configuration.application.ifPresent(application -> criteria.optApplication(Application.of(application)));
-//        configuration.engine.ifPresent(criteria::optEngine);
-//        configuration.groupId.ifPresent(criteria::optGroupId);
-//        configuration.artifactId.ifPresent(criteria::optArtifactId);
-//        configuration.modelName.ifPresent(criteria::optModelName);
+        configuration.application.ifPresent(application -> criteria.optApplication(Application.of(application)));
+        configuration.engine.ifPresent(criteria::optEngine);
+        configuration.groupId.ifPresent(criteria::optGroupId);
+        configuration.artifactId.ifPresent(criteria::optArtifactId);
+        configuration.modelName.ifPresent(criteria::optModelName);
 
         ZooModel<InputClass, OutputClass> model = ModelZoo.loadModel(criteria);
         return new RuntimeValue<>(model);
