@@ -30,11 +30,13 @@ public class DjlPredictorRecorder<InputClass, OutputClass> {
                 .optFilters(configuration.filters)
                 .build();
 
-        configuration.application.ifPresent(application -> criteria.optApplication(Application.of(application)));
-        configuration.engine.ifPresent(criteria::optEngine);
-        configuration.groupId.ifPresent(criteria::optGroupId);
-        configuration.artifactId.ifPresent(criteria::optArtifactId);
-        configuration.modelName.ifPresent(criteria::optModelName);
+        // TODO: Need to fix before creating Pull Request
+
+        // configuration.application.ifPresent(application -> criteria.optApplication(Application.of(application)));
+        // configuration.engine.ifPresent(criteria::optEngine);
+        // configuration.groupId.ifPresent(criteria::optGroupId);
+        // configuration.artifactId.ifPresent(criteria::optArtifactId);
+        // configuration.modelName.ifPresent(criteria::optModelName);
 
         ZooModel<InputClass, OutputClass> model = ModelZoo.loadModel(criteria);
         return new RuntimeValue<>(model);
